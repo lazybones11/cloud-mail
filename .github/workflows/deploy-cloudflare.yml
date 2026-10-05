@@ -74,6 +74,9 @@ jobs:
             exit 1
           fi
           
+          # Normalize pasted JSON to one line before inserting it into the TOML file.
+          DOMAIN=$(jq -c . <<< "$DOMAIN")
+          
           if [ -z "$ADMIN" ]; then
             echo "❌ ADMIN variable cannot be empty."
             exit 1
